@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.teach.dao.CourseModelMapper" >
+  <resultMap id="BaseResultMap" type="com.teach.model.CourseModel" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="course_num" property="courseNum" jdbcType="VARCHAR" />
+    <result column="course_name" property="courseName" jdbcType="VARCHAR" />
+    <result column="class_ids" property="classIds" jdbcType="VARCHAR" />
+    <result column="start_time" property="startTime" jdbcType="DATE" />
+    <result column="end_time" property="endTime" jdbcType="DATE" />
+    <result column="limite_week" property="limiteWeek" jdbcType="VARCHAR" />
+    <result column="week" property="week" jdbcType="VARCHAR" />
+    <result column="section" property="section" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="major" property="major" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, course_num, course_name, class_ids, start_time, end_time, limite_week, week, 
+    section, type, major
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from app_course
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from app_course
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.teach.model.CourseModel" >
+    insert into app_course (id, course_num, course_name, 
+      class_ids, start_time, end_time, 
+      limite_week, week, section, 
+      type, major)
+    values (#{id,jdbcType=BIGINT}, #{courseNum,jdbcType=VARCHAR}, #{courseName,jdbcType=VARCHAR}, 
+      #{classIds,jdbcType=VARCHAR}, #{startTime,jdbcType=DATE}, #{endTime,jdbcType=DATE}, 
+      #{limiteWeek,jdbcType=VARCHAR}, #{week,jdbcType=VARCHAR}, #{section,jdbcType=VARCHAR}, 
+      #{type,jdbcType=VARCHAR}, #{major,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.teach.model.CourseModel" >
+    insert into app_course
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="courseNum != null" >
+        course_num,
+      </if>
+      <if test="courseName != null" >
+        course_name,
+      </if>
+      <if test="classIds != null" >
+        class_ids,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+      <if test="limiteWeek != null" >
+        limite_week,
+      </if>
+      <if test="week != null" >
+        week,
+      </if>
+      <if test="section != null" >
+        section,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="major != null" >
+        major,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="courseNum != null" >
+        #{courseNum,jdbcType=VARCHAR},
+      </if>
+      <if test="courseName != null" >
+        #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="classIds != null" >
+        #{classIds,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=DATE},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=DATE},
+      </if>
+      <if test="limiteWeek != null" >
+        #{limiteWeek,jdbcType=VARCHAR},
+      </if>
+      <if test="week != null" >
+        #{week,jdbcType=VARCHAR},
+      </if>
+      <if test="section != null" >
+        #{section,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null" >
+        #{major,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.teach.model.CourseModel" >
+    update app_course
+    <set >
+      <if test="courseNum != null" >
+        course_num = #{courseNum,jdbcType=VARCHAR},
+      </if>
+      <if test="courseName != null" >
+        course_name = #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="classIds != null" >
+        class_ids = #{classIds,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=DATE},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=DATE},
+      </if>
+      <if test="limiteWeek != null" >
+        limite_week = #{limiteWeek,jdbcType=VARCHAR},
+      </if>
+      <if test="week != null" >
+        week = #{week,jdbcType=VARCHAR},
+      </if>
+      <if test="section != null" >
+        section = #{section,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null" >
+        major = #{major,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.teach.model.CourseModel" >
+    update app_course
+    set course_num = #{courseNum,jdbcType=VARCHAR},
+      course_name = #{courseName,jdbcType=VARCHAR},
+      class_ids = #{classIds,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=DATE},
+      end_time = #{endTime,jdbcType=DATE},
+      limite_week = #{limiteWeek,jdbcType=VARCHAR},
+      week = #{week,jdbcType=VARCHAR},
+      section = #{section,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      major = #{major,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

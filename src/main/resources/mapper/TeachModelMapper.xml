@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.teach.dao.TeachModelMapper" >
+  <resultMap id="BaseResultMap" type="com.teach.model.TeachModel" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="job_num" property="jobNum" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="xi_name" property="xiName" jdbcType="VARCHAR" />
+    <result column="xi_num" property="xiNum" jdbcType="VARCHAR" />
+    <result column="group" property="group" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="rate_num" property="rateNum" jdbcType="INTEGER" />
+    <result column="course_num" property="courseNum" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="xi_name_" property="xiName_" jdbcType="VARCHAR" />
+    <result column="rate_times" property="rateTimes" jdbcType="INTEGER" />
+    <result column="max_rate" property="maxRate" jdbcType="INTEGER" />
+    <result column="min_rate" property="minRate" jdbcType="INTEGER" />
+    <result column="avg_rate" property="avgRate" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, job_num, password, name, xi_name, xi_num, group, title, type, rate_num, course_num, 
+    create_time, modify_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from app_teach
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from app_teach
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.teach.model.TeachModel" >
+    insert into app_teach (id, job_num, password, 
+      name, xi_name, xi_num, 
+      group, title, type, 
+      rate_num, course_num, create_time, 
+      modify_time)
+    values (#{id,jdbcType=BIGINT}, #{jobNum,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{xiName,jdbcType=VARCHAR}, #{xiNum,jdbcType=VARCHAR}, 
+      #{group,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{rateNum,jdbcType=INTEGER}, #{courseNum,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.teach.model.TeachModel" >
+    insert into app_teach
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="jobNum != null" >
+        job_num,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="xiName != null" >
+        xi_name,
+      </if>
+      <if test="xiNum != null" >
+        xi_num,
+      </if>
+      <if test="group != null" >
+        group,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="rateNum != null" >
+        rate_num,
+      </if>
+      <if test="courseNum != null" >
+        course_num,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="jobNum != null" >
+        #{jobNum,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="xiName != null" >
+        #{xiName,jdbcType=VARCHAR},
+      </if>
+      <if test="xiNum != null" >
+        #{xiNum,jdbcType=VARCHAR},
+      </if>
+      <if test="group != null" >
+        #{group,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="rateNum != null" >
+        #{rateNum,jdbcType=INTEGER},
+      </if>
+      <if test="courseNum != null" >
+        #{courseNum,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.teach.model.TeachModel" >
+    update app_teach
+    <set >
+      <if test="jobNum != null" >
+        job_num = #{jobNum,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="xiName != null" >
+        xi_name = #{xiName,jdbcType=VARCHAR},
+      </if>
+      <if test="xiNum != null" >
+        xi_num = #{xiNum,jdbcType=VARCHAR},
+      </if>
+      <if test="group != null" >
+        group = #{group,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="rateNum != null" >
+        rate_num = #{rateNum,jdbcType=INTEGER},
+      </if>
+      <if test="courseNum != null" >
+        course_num = #{courseNum,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.teach.model.TeachModel" >
+    update app_teach
+    set job_num = #{jobNum,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      xi_name = #{xiName,jdbcType=VARCHAR},
+      xi_num = #{xiNum,jdbcType=VARCHAR},
+      group = #{group,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      rate_num = #{rateNum,jdbcType=INTEGER},
+      course_num = #{courseNum,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="superivorRateStat" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select t.id, x.xi_name xi_name_, name, count(s.id) rate_times, max(total_rates) max_rate,
+    min(total_rates) min_rate, avg(total_rates) avg_rate
+    from (app_xi x left join app_teach t on x.xi_name = t.xi_name)
+    left join app_steering_rates s on s.teach_id = t.id
+    where t.type= '2'
+    <if test="start_time != null">
+      AND teaching_time &gt;= #{start_time, jdbcType=DATE}
+    </if>
+    <if test="end_time != null">
+      AND teaching_time &lt;= #{end_time, jdbcType=DATE}
+    </if>
+    group by s.teach_id
+  </select>
+
+</mapper>

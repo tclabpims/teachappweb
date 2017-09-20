@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.teach.dao.TeachScheduleModelMapper" >
+  <resultMap id="BaseResultMap" type="com.teach.model.TeachScheduleModel" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="teach_id" property="teachId" jdbcType="BIGINT" />
+    <result column="course_name" property="courseName" jdbcType="VARCHAR" />
+    <result column="course_num" property="courseNum" jdbcType="VARCHAR" />
+    <result column="section" property="section" jdbcType="INTEGER" />
+    <result column="classroom" property="classroom" jdbcType="VARCHAR" />
+    <result column="class_id" property="classId" jdbcType="VARCHAR" />
+    <result column="week1" property="week1" jdbcType="VARCHAR" />
+    <result column="rowspan1" property="rowspan1" jdbcType="INTEGER" />
+    <result column="week2" property="week2" jdbcType="VARCHAR" />
+    <result column="rowspan2" property="rowspan2" jdbcType="INTEGER" />
+    <result column="week3" property="week3" jdbcType="VARCHAR" />
+    <result column="rowspan3" property="rowspan3" jdbcType="INTEGER" />
+    <result column="week4" property="week4" jdbcType="VARCHAR" />
+    <result column="rowspan4" property="rowspan4" jdbcType="INTEGER" />
+    <result column="week5" property="week5" jdbcType="VARCHAR" />
+    <result column="rowspan5" property="rowspan5" jdbcType="INTEGER" />
+    <result column="week6" property="week6" jdbcType="VARCHAR" />
+    <result column="rowspan6" property="rowspan6" jdbcType="INTEGER" />
+    <result column="week7" property="week7" jdbcType="VARCHAR" />
+    <result column="rowspan7" property="rowspan7" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, teach_id, course_name, course_num, section, classroom, class_id, week1, rowspan1, 
+    week2, rowspan2, week3, rowspan3, week4, rowspan4, week5, rowspan5, week6, rowspan6, 
+    week7, rowspan7
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from app_teach_schedule
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from app_teach_schedule
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.teach.model.TeachScheduleModel" >
+    insert into app_teach_schedule (id, teach_id, course_name, 
+      course_num, section, classroom, 
+      class_id, week1, rowspan1, 
+      week2, rowspan2, week3, 
+      rowspan3, week4, rowspan4, 
+      week5, rowspan5, week6, 
+      rowspan6, week7, rowspan7
+      )
+    values (#{id,jdbcType=BIGINT}, #{teachId,jdbcType=BIGINT}, #{courseName,jdbcType=VARCHAR}, 
+      #{courseNum,jdbcType=VARCHAR}, #{section,jdbcType=INTEGER}, #{classroom,jdbcType=VARCHAR}, 
+      #{classId,jdbcType=VARCHAR}, #{week1,jdbcType=VARCHAR}, #{rowspan1,jdbcType=INTEGER}, 
+      #{week2,jdbcType=VARCHAR}, #{rowspan2,jdbcType=INTEGER}, #{week3,jdbcType=VARCHAR}, 
+      #{rowspan3,jdbcType=INTEGER}, #{week4,jdbcType=VARCHAR}, #{rowspan4,jdbcType=INTEGER}, 
+      #{week5,jdbcType=VARCHAR}, #{rowspan5,jdbcType=INTEGER}, #{week6,jdbcType=VARCHAR}, 
+      #{rowspan6,jdbcType=INTEGER}, #{week7,jdbcType=VARCHAR}, #{rowspan7,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.teach.model.TeachScheduleModel" >
+    insert into app_teach_schedule
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="teachId != null" >
+        teach_id,
+      </if>
+      <if test="courseName != null" >
+        course_name,
+      </if>
+      <if test="courseNum != null" >
+        course_num,
+      </if>
+      <if test="section != null" >
+        section,
+      </if>
+      <if test="classroom != null" >
+        classroom,
+      </if>
+      <if test="classId != null" >
+        class_id,
+      </if>
+      <if test="week1 != null" >
+        week1,
+      </if>
+      <if test="rowspan1 != null" >
+        rowspan1,
+      </if>
+      <if test="week2 != null" >
+        week2,
+      </if>
+      <if test="rowspan2 != null" >
+        rowspan2,
+      </if>
+      <if test="week3 != null" >
+        week3,
+      </if>
+      <if test="rowspan3 != null" >
+        rowspan3,
+      </if>
+      <if test="week4 != null" >
+        week4,
+      </if>
+      <if test="rowspan4 != null" >
+        rowspan4,
+      </if>
+      <if test="week5 != null" >
+        week5,
+      </if>
+      <if test="rowspan5 != null" >
+        rowspan5,
+      </if>
+      <if test="week6 != null" >
+        week6,
+      </if>
+      <if test="rowspan6 != null" >
+        rowspan6,
+      </if>
+      <if test="week7 != null" >
+        week7,
+      </if>
+      <if test="rowspan7 != null" >
+        rowspan7,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="teachId != null" >
+        #{teachId,jdbcType=BIGINT},
+      </if>
+      <if test="courseName != null" >
+        #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="courseNum != null" >
+        #{courseNum,jdbcType=VARCHAR},
+      </if>
+      <if test="section != null" >
+        #{section,jdbcType=INTEGER},
+      </if>
+      <if test="classroom != null" >
+        #{classroom,jdbcType=VARCHAR},
+      </if>
+      <if test="classId != null" >
+        #{classId,jdbcType=VARCHAR},
+      </if>
+      <if test="week1 != null" >
+        #{week1,jdbcType=VARCHAR},
+      </if>
+      <if test="rowspan1 != null" >
+        #{rowspan1,jdbcType=INTEGER},
+      </if>
+      <if test="week2 != null" >
+        #{week2,jdbcType=VARCHAR},
+      </if>
+      <if test="rowspan2 != null" >
+        #{rowspan2,jdbcType=INTEGER},
+      </if>
+      <if test="week3 != null" >
+        #{week3,jdbcType=VARCHAR},
+      </if>
+      <if test="rowspan3 != null" >
+        #{rowspan3,jdbcType=INTEGER},
+      </if>
+      <if test="week4 != null" >
+        #{week4,jdbcType=VARCHAR},
+      </if>
+      <if test="rowspan4 != null" >
+        #{rowspan4,jdbcType=INTEGER},
+      </if>
+      <if test="week5 != null" >
+        #{week5,jdbcType=VARCHAR},
+      </if>
+      <if test="rowspan5 != null" >
+        #{rowspan5,jdbcType=INTEGER},
+      </if>
+      <if test="week6 != null" >
+        #{week6,jdbcType=VARCHAR},
+      </if>
+      <if test="rowspan6 != null" >
+        #{rowspan6,jdbcType=INTEGER},
+      </if>
+      <if test="week7 != null" >
+        #{week7,jdbcType=VARCHAR},
+      </if>
+      <if test="rowspan7 != null" >
+        #{rowspan7,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.teach.model.TeachScheduleModel" >
+    update app_teach_schedule
+    <set >
+      <if test="teachId != null" >
+        teach_id = #{teachId,jdbcType=BIGINT},
+      </if>
+      <if test="courseName != null" >
+        course_name = #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="courseNum != null" >
+        course_num = #{courseNum,jdbcType=VARCHAR},
+      </if>
+      <if test="section != null" >
+        section = #{section,jdbcType=INTEGER},
+      </if>
+      <if test="classroom != null" >
+        classroom = #{classroom,jdbcType=VARCHAR},
+      </if>
+      <if test="classId != null" >
+        class_id = #{classId,jdbcType=VARCHAR},
+      </if>
+      <if test="week1 != null" >
+        week1 = #{week1,jdbcType=VARCHAR},
+      </if>
+      <if test="rowspan1 != null" >
+        rowspan1 = #{rowspan1,jdbcType=INTEGER},
+      </if>
+      <if test="week2 != null" >
+        week2 = #{week2,jdbcType=VARCHAR},
+      </if>
+      <if test="rowspan2 != null" >
+        rowspan2 = #{rowspan2,jdbcType=INTEGER},
+      </if>
+      <if test="week3 != null" >
+        week3 = #{week3,jdbcType=VARCHAR},
+      </if>
+      <if test="rowspan3 != null" >
+        rowspan3 = #{rowspan3,jdbcType=INTEGER},
+      </if>
+      <if test="week4 != null" >
+        week4 = #{week4,jdbcType=VARCHAR},
+      </if>
+      <if test="rowspan4 != null" >
+        rowspan4 = #{rowspan4,jdbcType=INTEGER},
+      </if>
+      <if test="week5 != null" >
+        week5 = #{week5,jdbcType=VARCHAR},
+      </if>
+      <if test="rowspan5 != null" >
+        rowspan5 = #{rowspan5,jdbcType=INTEGER},
+      </if>
+      <if test="week6 != null" >
+        week6 = #{week6,jdbcType=VARCHAR},
+      </if>
+      <if test="rowspan6 != null" >
+        rowspan6 = #{rowspan6,jdbcType=INTEGER},
+      </if>
+      <if test="week7 != null" >
+        week7 = #{week7,jdbcType=VARCHAR},
+      </if>
+      <if test="rowspan7 != null" >
+        rowspan7 = #{rowspan7,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.teach.model.TeachScheduleModel" >
+    update app_teach_schedule
+    set teach_id = #{teachId,jdbcType=BIGINT},
+      course_name = #{courseName,jdbcType=VARCHAR},
+      course_num = #{courseNum,jdbcType=VARCHAR},
+      section = #{section,jdbcType=INTEGER},
+      classroom = #{classroom,jdbcType=VARCHAR},
+      class_id = #{classId,jdbcType=VARCHAR},
+      week1 = #{week1,jdbcType=VARCHAR},
+      rowspan1 = #{rowspan1,jdbcType=INTEGER},
+      week2 = #{week2,jdbcType=VARCHAR},
+      rowspan2 = #{rowspan2,jdbcType=INTEGER},
+      week3 = #{week3,jdbcType=VARCHAR},
+      rowspan3 = #{rowspan3,jdbcType=INTEGER},
+      week4 = #{week4,jdbcType=VARCHAR},
+      rowspan4 = #{rowspan4,jdbcType=INTEGER},
+      week5 = #{week5,jdbcType=VARCHAR},
+      rowspan5 = #{rowspan5,jdbcType=INTEGER},
+      week6 = #{week6,jdbcType=VARCHAR},
+      rowspan6 = #{rowspan6,jdbcType=INTEGER},
+      week7 = #{week7,jdbcType=VARCHAR},
+      rowspan7 = #{rowspan7,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

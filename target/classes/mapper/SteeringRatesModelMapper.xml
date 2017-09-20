@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.teach.dao.SteeringRatesModelMapper" >
+  <resultMap id="BaseResultMap" type="com.teach.model.SteeringRatesModel" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="steering_id" property="steeringId" jdbcType="BIGINT" />
+    <result column="teach_id" property="teachId" jdbcType="BIGINT" />
+    <result column="teaching_time" property="teachingTime" jdbcType="DATE" />
+    <result column="course_id" property="courseId" jdbcType="BIGINT" />
+    <result column="section" property="section" jdbcType="INTEGER" />
+    <result column="course_type" property="courseType" jdbcType="VARCHAR" />
+    <result column="class_id" property="classId" jdbcType="BIGINT" />
+    <result column="tonum" property="tonum" jdbcType="INTEGER" />
+    <result column="latenum" property="latenum" jdbcType="INTEGER" />
+    <result column="classroom" property="classroom" jdbcType="VARCHAR" />
+    <result column="teach_content" property="teachContent" jdbcType="VARCHAR" />
+    <result column="save_time1" property="saveTime1" jdbcType="TIMESTAMP" />
+    <result column="rates1" property="rates1" jdbcType="INTEGER" />
+    <result column="rates2" property="rates2" jdbcType="INTEGER" />
+    <result column="rates3" property="rates3" jdbcType="INTEGER" />
+    <result column="rates4" property="rates4" jdbcType="INTEGER" />
+    <result column="rates5" property="rates5" jdbcType="INTEGER" />
+    <result column="rates6" property="rates6" jdbcType="INTEGER" />
+    <result column="rates7" property="rates7" jdbcType="INTEGER" />
+    <result column="rates8" property="rates8" jdbcType="INTEGER" />
+    <result column="rates9" property="rates9" jdbcType="INTEGER" />
+    <result column="total_rates" property="totalRates" jdbcType="INTEGER" />
+    <result column="save_time2" property="saveTime2" jdbcType="TIMESTAMP" />
+    <result column="rates_content1" property="ratesContent1" jdbcType="VARCHAR" />
+    <result column="rates_teach_name1" property="ratesTeachName1" jdbcType="VARCHAR" />
+    <result column="rates_time1" property="ratesTime1" jdbcType="TIMESTAMP" />
+    <result column="rates_content2" property="ratesContent2" jdbcType="VARCHAR" />
+    <result column="rates_teach_name2" property="ratesTeachName2" jdbcType="VARCHAR" />
+    <result column="rates_time2" property="ratesTime2" jdbcType="TIMESTAMP" />
+    <result column="rates_content3" property="ratesContent3" jdbcType="VARCHAR" />
+    <result column="rates_teach_name3" property="ratesTeachName3" jdbcType="VARCHAR" />
+    <result column="rates_time3" property="ratesTime3" jdbcType="TIMESTAMP" />
+    <result column="rates_content4" property="ratesContent4" jdbcType="VARCHAR" />
+    <result column="rates_teach_name4" property="ratesTeachName4" jdbcType="VARCHAR" />
+    <result column="rates_time4" property="ratesTime4" jdbcType="TIMESTAMP" />
+    <result column="rates_content5" property="ratesContent5" jdbcType="VARCHAR" />
+    <result column="rates_teach_name5" property="ratesTeachName5" jdbcType="VARCHAR" />
+    <result column="rates_time5" property="ratesTime5" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <collection property="classModel" javaType="com.teach.model.ClassModel">
+      <id column="c_id" property="id" jdbcType="BIGINT" />
+      <result column="c_xi_num" property="xiNum" jdbcType="VARCHAR" />
+      <result column="c_xi_name" property="xiName" jdbcType="VARCHAR" />
+    </collection>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, steering_id, teach_id, teaching_time, course_id, section, course_type, class_id, 
+    tonum, latenum, classroom, teach_content, save_time1, rates1, rates2, rates3, rates4, 
+    rates5, rates6, rates7, rates8, rates9, total_rates, save_time2, rates_content1, 
+    rates_teach_name1, rates_time1, rates_content2, rates_teach_name2, rates_time2, rates_content3, 
+    rates_teach_name3, rates_time3, rates_content4, rates_teach_name4, rates_time4, rates_content5, 
+    rates_teach_name5, rates_time5, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from app_steering_rates
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from app_steering_rates
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.teach.model.SteeringRatesModel" >
+    insert into app_steering_rates (id, steering_id, teach_id, 
+      teaching_time, course_id, section, 
+      course_type, class_id, tonum, 
+      latenum, classroom, teach_content, 
+      save_time1, rates1, rates2, 
+      rates3, rates4, rates5, 
+      rates6, rates7, rates8, 
+      rates9, total_rates, save_time2, 
+      rates_content1, rates_teach_name1, rates_time1, 
+      rates_content2, rates_teach_name2, rates_time2, 
+      rates_content3, rates_teach_name3, rates_time3, 
+      rates_content4, rates_teach_name4, rates_time4, 
+      rates_content5, rates_teach_name5, rates_time5, 
+      status)
+    values (#{id,jdbcType=BIGINT}, #{steeringId,jdbcType=BIGINT}, #{teachId,jdbcType=BIGINT}, 
+      #{teachingTime,jdbcType=DATE}, #{courseId,jdbcType=BIGINT}, #{section,jdbcType=INTEGER}, 
+      #{courseType,jdbcType=VARCHAR}, #{classId,jdbcType=BIGINT}, #{tonum,jdbcType=INTEGER}, 
+      #{latenum,jdbcType=INTEGER}, #{classroom,jdbcType=VARCHAR}, #{teachContent,jdbcType=VARCHAR}, 
+      #{saveTime1,jdbcType=TIMESTAMP}, #{rates1,jdbcType=INTEGER}, #{rates2,jdbcType=INTEGER}, 
+      #{rates3,jdbcType=INTEGER}, #{rates4,jdbcType=INTEGER}, #{rates5,jdbcType=INTEGER}, 
+      #{rates6,jdbcType=INTEGER}, #{rates7,jdbcType=INTEGER}, #{rates8,jdbcType=INTEGER}, 
+      #{rates9,jdbcType=INTEGER}, #{totalRates,jdbcType=INTEGER}, #{saveTime2,jdbcType=TIMESTAMP}, 
+      #{ratesContent1,jdbcType=VARCHAR}, #{ratesTeachName1,jdbcType=VARCHAR}, #{ratesTime1,jdbcType=TIMESTAMP}, 
+      #{ratesContent2,jdbcType=VARCHAR}, #{ratesTeachName2,jdbcType=VARCHAR}, #{ratesTime2,jdbcType=TIMESTAMP}, 
+      #{ratesContent3,jdbcType=VARCHAR}, #{ratesTeachName3,jdbcType=VARCHAR}, #{ratesTime3,jdbcType=TIMESTAMP}, 
+      #{ratesContent4,jdbcType=VARCHAR}, #{ratesTeachName4,jdbcType=VARCHAR}, #{ratesTime4,jdbcType=TIMESTAMP}, 
+      #{ratesContent5,jdbcType=VARCHAR}, #{ratesTeachName5,jdbcType=VARCHAR}, #{ratesTime5,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.teach.model.SteeringRatesModel" >
+    insert into app_steering_rates
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="steeringId != null" >
+        steering_id,
+      </if>
+      <if test="teachId != null" >
+        teach_id,
+      </if>
+      <if test="teachingTime != null" >
+        teaching_time,
+      </if>
+      <if test="courseId != null" >
+        course_id,
+      </if>
+      <if test="section != null" >
+        section,
+      </if>
+      <if test="courseType != null" >
+        course_type,
+      </if>
+      <if test="classId != null" >
+        class_id,
+      </if>
+      <if test="tonum != null" >
+        tonum,
+      </if>
+      <if test="latenum != null" >
+        latenum,
+      </if>
+      <if test="classroom != null" >
+        classroom,
+      </if>
+      <if test="teachContent != null" >
+        teach_content,
+      </if>
+      <if test="saveTime1 != null" >
+        save_time1,
+      </if>
+      <if test="rates1 != null" >
+        rates1,
+      </if>
+      <if test="rates2 != null" >
+        rates2,
+      </if>
+      <if test="rates3 != null" >
+        rates3,
+      </if>
+      <if test="rates4 != null" >
+        rates4,
+      </if>
+      <if test="rates5 != null" >
+        rates5,
+      </if>
+      <if test="rates6 != null" >
+        rates6,
+      </if>
+      <if test="rates7 != null" >
+        rates7,
+      </if>
+      <if test="rates8 != null" >
+        rates8,
+      </if>
+      <if test="rates9 != null" >
+        rates9,
+      </if>
+      <if test="totalRates != null" >
+        total_rates,
+      </if>
+      <if test="saveTime2 != null" >
+        save_time2,
+      </if>
+      <if test="ratesContent1 != null" >
+        rates_content1,
+      </if>
+      <if test="ratesTeachName1 != null" >
+        rates_teach_name1,
+      </if>
+      <if test="ratesTime1 != null" >
+        rates_time1,
+      </if>
+      <if test="ratesContent2 != null" >
+        rates_content2,
+      </if>
+      <if test="ratesTeachName2 != null" >
+        rates_teach_name2,
+      </if>
+      <if test="ratesTime2 != null" >
+        rates_time2,
+      </if>
+      <if test="ratesContent3 != null" >
+        rates_content3,
+      </if>
+      <if test="ratesTeachName3 != null" >
+        rates_teach_name3,
+      </if>
+      <if test="ratesTime3 != null" >
+        rates_time3,
+      </if>
+      <if test="ratesContent4 != null" >
+        rates_content4,
+      </if>
+      <if test="ratesTeachName4 != null" >
+        rates_teach_name4,
+      </if>
+      <if test="ratesTime4 != null" >
+        rates_time4,
+      </if>
+      <if test="ratesContent5 != null" >
+        rates_content5,
+      </if>
+      <if test="ratesTeachName5 != null" >
+        rates_teach_name5,
+      </if>
+      <if test="ratesTime5 != null" >
+        rates_time5,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="steeringId != null" >
+        #{steeringId,jdbcType=BIGINT},
+      </if>
+      <if test="teachId != null" >
+        #{teachId,jdbcType=BIGINT},
+      </if>
+      <if test="teachingTime != null" >
+        #{teachingTime,jdbcType=DATE},
+      </if>
+      <if test="courseId != null" >
+        #{courseId,jdbcType=BIGINT},
+      </if>
+      <if test="section != null" >
+        #{section,jdbcType=INTEGER},
+      </if>
+      <if test="courseType != null" >
+        #{courseType,jdbcType=VARCHAR},
+      </if>
+      <if test="classId != null" >
+        #{classId,jdbcType=BIGINT},
+      </if>
+      <if test="tonum != null" >
+        #{tonum,jdbcType=INTEGER},
+      </if>
+      <if test="latenum != null" >
+        #{latenum,jdbcType=INTEGER},
+      </if>
+      <if test="classroom != null" >
+        #{classroom,jdbcType=VARCHAR},
+      </if>
+      <if test="teachContent != null" >
+        #{teachContent,jdbcType=VARCHAR},
+      </if>
+      <if test="saveTime1 != null" >
+        #{saveTime1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rates1 != null" >
+        #{rates1,jdbcType=INTEGER},
+      </if>
+      <if test="rates2 != null" >
+        #{rates2,jdbcType=INTEGER},
+      </if>
+      <if test="rates3 != null" >
+        #{rates3,jdbcType=INTEGER},
+      </if>
+      <if test="rates4 != null" >
+        #{rates4,jdbcType=INTEGER},
+      </if>
+      <if test="rates5 != null" >
+        #{rates5,jdbcType=INTEGER},
+      </if>
+      <if test="rates6 != null" >
+        #{rates6,jdbcType=INTEGER},
+      </if>
+      <if test="rates7 != null" >
+        #{rates7,jdbcType=INTEGER},
+      </if>
+      <if test="rates8 != null" >
+        #{rates8,jdbcType=INTEGER},
+      </if>
+      <if test="rates9 != null" >
+        #{rates9,jdbcType=INTEGER},
+      </if>
+      <if test="totalRates != null" >
+        #{totalRates,jdbcType=INTEGER},
+      </if>
+      <if test="saveTime2 != null" >
+        #{saveTime2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ratesContent1 != null" >
+        #{ratesContent1,jdbcType=VARCHAR},
+      </if>
+      <if test="ratesTeachName1 != null" >
+        #{ratesTeachName1,jdbcType=VARCHAR},
+      </if>
+      <if test="ratesTime1 != null" >
+        #{ratesTime1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ratesContent2 != null" >
+        #{ratesContent2,jdbcType=VARCHAR},
+      </if>
+      <if test="ratesTeachName2 != null" >
+        #{ratesTeachName2,jdbcType=VARCHAR},
+      </if>
+      <if test="ratesTime2 != null" >
+        #{ratesTime2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ratesContent3 != null" >
+        #{ratesContent3,jdbcType=VARCHAR},
+      </if>
+      <if test="ratesTeachName3 != null" >
+        #{ratesTeachName3,jdbcType=VARCHAR},
+      </if>
+      <if test="ratesTime3 != null" >
+        #{ratesTime3,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ratesContent4 != null" >
+        #{ratesContent4,jdbcType=VARCHAR},
+      </if>
+      <if test="ratesTeachName4 != null" >
+        #{ratesTeachName4,jdbcType=VARCHAR},
+      </if>
+      <if test="ratesTime4 != null" >
+        #{ratesTime4,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ratesContent5 != null" >
+        #{ratesContent5,jdbcType=VARCHAR},
+      </if>
+      <if test="ratesTeachName5 != null" >
+        #{ratesTeachName5,jdbcType=VARCHAR},
+      </if>
+      <if test="ratesTime5 != null" >
+        #{ratesTime5,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.teach.model.SteeringRatesModel" >
+    update app_steering_rates
+    <set >
+      <if test="steeringId != null" >
+        steering_id = #{steeringId,jdbcType=BIGINT},
+      </if>
+      <if test="teachId != null" >
+        teach_id = #{teachId,jdbcType=BIGINT},
+      </if>
+      <if test="teachingTime != null" >
+        teaching_time = #{teachingTime,jdbcType=DATE},
+      </if>
+      <if test="courseId != null" >
+        course_id = #{courseId,jdbcType=BIGINT},
+      </if>
+      <if test="section != null" >
+        section = #{section,jdbcType=INTEGER},
+      </if>
+      <if test="courseType != null" >
+        course_type = #{courseType,jdbcType=VARCHAR},
+      </if>
+      <if test="classId != null" >
+        class_id = #{classId,jdbcType=BIGINT},
+      </if>
+      <if test="tonum != null" >
+        tonum = #{tonum,jdbcType=INTEGER},
+      </if>
+      <if test="latenum != null" >
+        latenum = #{latenum,jdbcType=INTEGER},
+      </if>
+      <if test="classroom != null" >
+        classroom = #{classroom,jdbcType=VARCHAR},
+      </if>
+      <if test="teachContent != null" >
+        teach_content = #{teachContent,jdbcType=VARCHAR},
+      </if>
+      <if test="saveTime1 != null" >
+        save_time1 = #{saveTime1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rates1 != null" >
+        rates1 = #{rates1,jdbcType=INTEGER},
+      </if>
+      <if test="rates2 != null" >
+        rates2 = #{rates2,jdbcType=INTEGER},
+      </if>
+      <if test="rates3 != null" >
+        rates3 = #{rates3,jdbcType=INTEGER},
+      </if>
+      <if test="rates4 != null" >
+        rates4 = #{rates4,jdbcType=INTEGER},
+      </if>
+      <if test="rates5 != null" >
+        rates5 = #{rates5,jdbcType=INTEGER},
+      </if>
+      <if test="rates6 != null" >
+        rates6 = #{rates6,jdbcType=INTEGER},
+      </if>
+      <if test="rates7 != null" >
+        rates7 = #{rates7,jdbcType=INTEGER},
+      </if>
+      <if test="rates8 != null" >
+        rates8 = #{rates8,jdbcType=INTEGER},
+      </if>
+      <if test="rates9 != null" >
+        rates9 = #{rates9,jdbcType=INTEGER},
+      </if>
+      <if test="totalRates != null" >
+        total_rates = #{totalRates,jdbcType=INTEGER},
+      </if>
+      <if test="saveTime2 != null" >
+        save_time2 = #{saveTime2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ratesContent1 != null" >
+        rates_content1 = #{ratesContent1,jdbcType=VARCHAR},
+      </if>
+      <if test="ratesTeachName1 != null" >
+        rates_teach_name1 = #{ratesTeachName1,jdbcType=VARCHAR},
+      </if>
+      <if test="ratesTime1 != null" >
+        rates_time1 = #{ratesTime1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ratesContent2 != null" >
+        rates_content2 = #{ratesContent2,jdbcType=VARCHAR},
+      </if>
+      <if test="ratesTeachName2 != null" >
+        rates_teach_name2 = #{ratesTeachName2,jdbcType=VARCHAR},
+      </if>
+      <if test="ratesTime2 != null" >
+        rates_time2 = #{ratesTime2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ratesContent3 != null" >
+        rates_content3 = #{ratesContent3,jdbcType=VARCHAR},
+      </if>
+      <if test="ratesTeachName3 != null" >
+        rates_teach_name3 = #{ratesTeachName3,jdbcType=VARCHAR},
+      </if>
+      <if test="ratesTime3 != null" >
+        rates_time3 = #{ratesTime3,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ratesContent4 != null" >
+        rates_content4 = #{ratesContent4,jdbcType=VARCHAR},
+      </if>
+      <if test="ratesTeachName4 != null" >
+        rates_teach_name4 = #{ratesTeachName4,jdbcType=VARCHAR},
+      </if>
+      <if test="ratesTime4 != null" >
+        rates_time4 = #{ratesTime4,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ratesContent5 != null" >
+        rates_content5 = #{ratesContent5,jdbcType=VARCHAR},
+      </if>
+      <if test="ratesTeachName5 != null" >
+        rates_teach_name5 = #{ratesTeachName5,jdbcType=VARCHAR},
+      </if>
+      <if test="ratesTime5 != null" >
+        rates_time5 = #{ratesTime5,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.teach.model.SteeringRatesModel" >
+    update app_steering_rates
+    set steering_id = #{steeringId,jdbcType=BIGINT},
+      teach_id = #{teachId,jdbcType=BIGINT},
+      teaching_time = #{teachingTime,jdbcType=DATE},
+      course_id = #{courseId,jdbcType=BIGINT},
+      section = #{section,jdbcType=INTEGER},
+      course_type = #{courseType,jdbcType=VARCHAR},
+      class_id = #{classId,jdbcType=BIGINT},
+      tonum = #{tonum,jdbcType=INTEGER},
+      latenum = #{latenum,jdbcType=INTEGER},
+      classroom = #{classroom,jdbcType=VARCHAR},
+      teach_content = #{teachContent,jdbcType=VARCHAR},
+      save_time1 = #{saveTime1,jdbcType=TIMESTAMP},
+      rates1 = #{rates1,jdbcType=INTEGER},
+      rates2 = #{rates2,jdbcType=INTEGER},
+      rates3 = #{rates3,jdbcType=INTEGER},
+      rates4 = #{rates4,jdbcType=INTEGER},
+      rates5 = #{rates5,jdbcType=INTEGER},
+      rates6 = #{rates6,jdbcType=INTEGER},
+      rates7 = #{rates7,jdbcType=INTEGER},
+      rates8 = #{rates8,jdbcType=INTEGER},
+      rates9 = #{rates9,jdbcType=INTEGER},
+      total_rates = #{totalRates,jdbcType=INTEGER},
+      save_time2 = #{saveTime2,jdbcType=TIMESTAMP},
+      rates_content1 = #{ratesContent1,jdbcType=VARCHAR},
+      rates_teach_name1 = #{ratesTeachName1,jdbcType=VARCHAR},
+      rates_time1 = #{ratesTime1,jdbcType=TIMESTAMP},
+      rates_content2 = #{ratesContent2,jdbcType=VARCHAR},
+      rates_teach_name2 = #{ratesTeachName2,jdbcType=VARCHAR},
+      rates_time2 = #{ratesTime2,jdbcType=TIMESTAMP},
+      rates_content3 = #{ratesContent3,jdbcType=VARCHAR},
+      rates_teach_name3 = #{ratesTeachName3,jdbcType=VARCHAR},
+      rates_time3 = #{ratesTime3,jdbcType=TIMESTAMP},
+      rates_content4 = #{ratesContent4,jdbcType=VARCHAR},
+      rates_teach_name4 = #{ratesTeachName4,jdbcType=VARCHAR},
+      rates_time4 = #{ratesTime4,jdbcType=TIMESTAMP},
+      rates_content5 = #{ratesContent5,jdbcType=VARCHAR},
+      rates_teach_name5 = #{ratesTeachName5,jdbcType=VARCHAR},
+      rates_time5 = #{ratesTime5,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectList" parameterType="java.util.Map" resultMap="BaseResultMap">
+    SELECT
+    s.id, steering_id, teach_id, teaching_time, course_id, section, course_type, class_id,
+    tonum, latenum, classroom, teach_content, save_time1, rates1, rates2, rates3, rates4,
+    rates5, rates6, rates7, rates8, rates9, total_rates, save_time2, rates_content1,
+    rates_teach_name1, rates_time1, rates_content2, rates_teach_name2, rates_time2, rates_content3,
+    rates_teach_name3, rates_time3, rates_content4, rates_teach_name4, rates_time4, rates_content5,
+    rates_teach_name5, rates_time5, status,
+    c.xi_num c_xi_num, c.xi_name c_xi_name
+    from app_steering_rates s LEFT JOIN app_class c on s.class_id = c.id
+    WHERE 1 = 1
+    <if test="start_time != null">
+     AND teaching_time &gt;= #{start_time, jdbcType=DATE}
+    </if>
+    <if test="end_time != null">
+     AND teaching_time &lt;= #{end_time, jdbcType=DATE}
+    </if>
+  </select>
+</mapper>

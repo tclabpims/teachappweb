@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.teach.dao.ClassModelMapper" >
+  <resultMap id="BaseResultMap" type="com.teach.model.ClassModel" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="class_name" property="className" jdbcType="VARCHAR" />
+    <result column="xi_num" property="xiNum" jdbcType="VARCHAR" />
+    <result column="xi_name" property="xiName" jdbcType="VARCHAR" />
+    <result column="graduates" property="graduates" jdbcType="VARCHAR" />
+    <result column="total_num" property="totalNum" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, class_name, xi_num, xi_name, graduates, total_num
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from app_class
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from app_class
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.teach.model.ClassModel" >
+    insert into app_class (id, class_name, xi_num, 
+      xi_name, graduates, total_num
+      )
+    values (#{id,jdbcType=BIGINT}, #{className,jdbcType=VARCHAR}, #{xiNum,jdbcType=VARCHAR}, 
+      #{xiName,jdbcType=VARCHAR}, #{graduates,jdbcType=VARCHAR}, #{totalNum,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.teach.model.ClassModel" >
+    insert into app_class
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="className != null" >
+        class_name,
+      </if>
+      <if test="xiNum != null" >
+        xi_num,
+      </if>
+      <if test="xiName != null" >
+        xi_name,
+      </if>
+      <if test="graduates != null" >
+        graduates,
+      </if>
+      <if test="totalNum != null" >
+        total_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="className != null" >
+        #{className,jdbcType=VARCHAR},
+      </if>
+      <if test="xiNum != null" >
+        #{xiNum,jdbcType=VARCHAR},
+      </if>
+      <if test="xiName != null" >
+        #{xiName,jdbcType=VARCHAR},
+      </if>
+      <if test="graduates != null" >
+        #{graduates,jdbcType=VARCHAR},
+      </if>
+      <if test="totalNum != null" >
+        #{totalNum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.teach.model.ClassModel" >
+    update app_class
+    <set >
+      <if test="className != null" >
+        class_name = #{className,jdbcType=VARCHAR},
+      </if>
+      <if test="xiNum != null" >
+        xi_num = #{xiNum,jdbcType=VARCHAR},
+      </if>
+      <if test="xiName != null" >
+        xi_name = #{xiName,jdbcType=VARCHAR},
+      </if>
+      <if test="graduates != null" >
+        graduates = #{graduates,jdbcType=VARCHAR},
+      </if>
+      <if test="totalNum != null" >
+        total_num = #{totalNum,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.teach.model.ClassModel" >
+    update app_class
+    set class_name = #{className,jdbcType=VARCHAR},
+      xi_num = #{xiNum,jdbcType=VARCHAR},
+      xi_name = #{xiName,jdbcType=VARCHAR},
+      graduates = #{graduates,jdbcType=VARCHAR},
+      total_num = #{totalNum,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

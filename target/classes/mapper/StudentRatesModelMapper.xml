@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.teach.dao.StudentRatesModelMapper" >
+  <resultMap id="BaseResultMap" type="com.teach.model.StudentRatesModel" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="student_id" property="studentId" jdbcType="BIGINT" />
+    <result column="course_num" property="courseNum" jdbcType="VARCHAR" />
+    <result column="course_name" property="courseName" jdbcType="VARCHAR" />
+    <result column="section" property="section" jdbcType="VARCHAR" />
+    <result column="teach_id" property="teachId" jdbcType="BIGINT" />
+    <result column="toclass_time" property="toclassTime" jdbcType="TIMESTAMP" />
+    <result column="rate1" property="rate1" jdbcType="INTEGER" />
+    <result column="rate2" property="rate2" jdbcType="INTEGER" />
+    <result column="rate3" property="rate3" jdbcType="INTEGER" />
+    <result column="rate4" property="rate4" jdbcType="INTEGER" />
+    <result column="rate5" property="rate5" jdbcType="INTEGER" />
+    <result column="total" property="total" jdbcType="INTEGER" />
+    <result column="rate_time" property="rateTime" jdbcType="TIMESTAMP" />
+    <result column="rate_content1" property="rateContent1" jdbcType="VARCHAR" />
+    <result column="rate_content2" property="rateContent2" jdbcType="VARCHAR" />
+    <result column="rate_content3" property="rateContent3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, student_id, course_num, course_name, section, teach_id, toclass_time, rate1, 
+    rate2, rate3, rate4, rate5, total, rate_time, rate_content1, rate_content2, rate_content3
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from app_student_rates
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from app_student_rates
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.teach.model.StudentRatesModel" >
+    insert into app_student_rates (id, student_id, course_num, 
+      course_name, section, teach_id, 
+      toclass_time, rate1, rate2, 
+      rate3, rate4, rate5, 
+      total, rate_time, rate_content1, 
+      rate_content2, rate_content3)
+    values (#{id,jdbcType=BIGINT}, #{studentId,jdbcType=BIGINT}, #{courseNum,jdbcType=VARCHAR}, 
+      #{courseName,jdbcType=VARCHAR}, #{section,jdbcType=VARCHAR}, #{teachId,jdbcType=BIGINT}, 
+      #{toclassTime,jdbcType=TIMESTAMP}, #{rate1,jdbcType=INTEGER}, #{rate2,jdbcType=INTEGER}, 
+      #{rate3,jdbcType=INTEGER}, #{rate4,jdbcType=INTEGER}, #{rate5,jdbcType=INTEGER}, 
+      #{total,jdbcType=INTEGER}, #{rateTime,jdbcType=TIMESTAMP}, #{rateContent1,jdbcType=VARCHAR}, 
+      #{rateContent2,jdbcType=VARCHAR}, #{rateContent3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.teach.model.StudentRatesModel" >
+    insert into app_student_rates
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="studentId != null" >
+        student_id,
+      </if>
+      <if test="courseNum != null" >
+        course_num,
+      </if>
+      <if test="courseName != null" >
+        course_name,
+      </if>
+      <if test="section != null" >
+        section,
+      </if>
+      <if test="teachId != null" >
+        teach_id,
+      </if>
+      <if test="toclassTime != null" >
+        toclass_time,
+      </if>
+      <if test="rate1 != null" >
+        rate1,
+      </if>
+      <if test="rate2 != null" >
+        rate2,
+      </if>
+      <if test="rate3 != null" >
+        rate3,
+      </if>
+      <if test="rate4 != null" >
+        rate4,
+      </if>
+      <if test="rate5 != null" >
+        rate5,
+      </if>
+      <if test="total != null" >
+        total,
+      </if>
+      <if test="rateTime != null" >
+        rate_time,
+      </if>
+      <if test="rateContent1 != null" >
+        rate_content1,
+      </if>
+      <if test="rateContent2 != null" >
+        rate_content2,
+      </if>
+      <if test="rateContent3 != null" >
+        rate_content3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="studentId != null" >
+        #{studentId,jdbcType=BIGINT},
+      </if>
+      <if test="courseNum != null" >
+        #{courseNum,jdbcType=VARCHAR},
+      </if>
+      <if test="courseName != null" >
+        #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="section != null" >
+        #{section,jdbcType=VARCHAR},
+      </if>
+      <if test="teachId != null" >
+        #{teachId,jdbcType=BIGINT},
+      </if>
+      <if test="toclassTime != null" >
+        #{toclassTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rate1 != null" >
+        #{rate1,jdbcType=INTEGER},
+      </if>
+      <if test="rate2 != null" >
+        #{rate2,jdbcType=INTEGER},
+      </if>
+      <if test="rate3 != null" >
+        #{rate3,jdbcType=INTEGER},
+      </if>
+      <if test="rate4 != null" >
+        #{rate4,jdbcType=INTEGER},
+      </if>
+      <if test="rate5 != null" >
+        #{rate5,jdbcType=INTEGER},
+      </if>
+      <if test="total != null" >
+        #{total,jdbcType=INTEGER},
+      </if>
+      <if test="rateTime != null" >
+        #{rateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rateContent1 != null" >
+        #{rateContent1,jdbcType=VARCHAR},
+      </if>
+      <if test="rateContent2 != null" >
+        #{rateContent2,jdbcType=VARCHAR},
+      </if>
+      <if test="rateContent3 != null" >
+        #{rateContent3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.teach.model.StudentRatesModel" >
+    update app_student_rates
+    <set >
+      <if test="studentId != null" >
+        student_id = #{studentId,jdbcType=BIGINT},
+      </if>
+      <if test="courseNum != null" >
+        course_num = #{courseNum,jdbcType=VARCHAR},
+      </if>
+      <if test="courseName != null" >
+        course_name = #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="section != null" >
+        section = #{section,jdbcType=VARCHAR},
+      </if>
+      <if test="teachId != null" >
+        teach_id = #{teachId,jdbcType=BIGINT},
+      </if>
+      <if test="toclassTime != null" >
+        toclass_time = #{toclassTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rate1 != null" >
+        rate1 = #{rate1,jdbcType=INTEGER},
+      </if>
+      <if test="rate2 != null" >
+        rate2 = #{rate2,jdbcType=INTEGER},
+      </if>
+      <if test="rate3 != null" >
+        rate3 = #{rate3,jdbcType=INTEGER},
+      </if>
+      <if test="rate4 != null" >
+        rate4 = #{rate4,jdbcType=INTEGER},
+      </if>
+      <if test="rate5 != null" >
+        rate5 = #{rate5,jdbcType=INTEGER},
+      </if>
+      <if test="total != null" >
+        total = #{total,jdbcType=INTEGER},
+      </if>
+      <if test="rateTime != null" >
+        rate_time = #{rateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rateContent1 != null" >
+        rate_content1 = #{rateContent1,jdbcType=VARCHAR},
+      </if>
+      <if test="rateContent2 != null" >
+        rate_content2 = #{rateContent2,jdbcType=VARCHAR},
+      </if>
+      <if test="rateContent3 != null" >
+        rate_content3 = #{rateContent3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.teach.model.StudentRatesModel" >
+    update app_student_rates
+    set student_id = #{studentId,jdbcType=BIGINT},
+      course_num = #{courseNum,jdbcType=VARCHAR},
+      course_name = #{courseName,jdbcType=VARCHAR},
+      section = #{section,jdbcType=VARCHAR},
+      teach_id = #{teachId,jdbcType=BIGINT},
+      toclass_time = #{toclassTime,jdbcType=TIMESTAMP},
+      rate1 = #{rate1,jdbcType=INTEGER},
+      rate2 = #{rate2,jdbcType=INTEGER},
+      rate3 = #{rate3,jdbcType=INTEGER},
+      rate4 = #{rate4,jdbcType=INTEGER},
+      rate5 = #{rate5,jdbcType=INTEGER},
+      total = #{total,jdbcType=INTEGER},
+      rate_time = #{rateTime,jdbcType=TIMESTAMP},
+      rate_content1 = #{rateContent1,jdbcType=VARCHAR},
+      rate_content2 = #{rateContent2,jdbcType=VARCHAR},
+      rate_content3 = #{rateContent3,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
